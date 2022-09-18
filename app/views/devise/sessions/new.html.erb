@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag 'title.css' %>
+<div class="fullscreen background">
+<h2 class="title has-text-white">Login</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email, class:"label has-text-white" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class:"label has-text-white" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"control" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field is-grouped">
+      <%= f.check_box :remember_me, class:"mr-1" %>
+      <%= f.label :remember_me, class:"label has-text-white" %>
+    </div>
+  <% end %>
+
+  <div class="control">
+    <%= f.submit "Log in" , class:"button is-link"%>
+  </div>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>

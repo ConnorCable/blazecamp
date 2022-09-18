@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag 'title.css' %>
+<div class="projects">
+    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <%= link_to "Home", root_path, class: "button has-text-dark"%>
+        </div>
+      </div>
+      <div class="navbar-end mr-3">
+      <div class="navbar-item">
+      <p class="mr-5 has-text-weight-bold">
+        Hello <%= @username%>
+      </p>
+        <a class="mr-1">
+          <%= link_to "Add Project", new_project_path, class: "button has-text-dark"%>
+        </a>
+        </div>
+      </div>
+    </div>
+    <div class="columns mt-6 ml-2">
+
+      <div class="column is-one-third">
+        <strong class="is-size-4"> All Projects </strong>
+              <% @projects.each do |project| %>
+                <%= render project %>
+              <% end %>  
+      </div>
+
+      <div class="column is-one-third">
+        <strong class="is-size-4">  My Projects </strong>
+              <% @users_projects.each do |project| %>
+                <%= render project %>
+              <% end %>  
+      </div>
+
+      <div class="column is-one-third">
+        <strong class="is-size-4">Shared Projects </strong>
+              <% @projects.each do |project| %>
+                <%= render project %>
+              <% end %>  
+      </div>
+
+      
+
+    </div>
+</div>
