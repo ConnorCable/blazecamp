@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   devise_scope :user do  
     get '/users/sign_out' => 'devise/sessions#destroy'     
  end
+
+ get '/pages/admin', to: "pages#index"
+ post '/pages/admin', to: "pages#toggle_admin"
+ delete '/pages/admin', to: "pages#destroy", :as => :user
+
 end

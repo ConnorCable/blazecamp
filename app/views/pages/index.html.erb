@@ -1,0 +1,43 @@
+<%= stylesheet_link_tag 'title.css' %>
+
+
+
+<div class="fullscreen background">
+    <%if current_user.admin%>
+        <div class="columns">
+            <div class="title has-text-white mr-4">Admin Page </div>
+            <button class="button is-large is-info mr-3"><%= link_to 'Back to Projects', "/projects", class:"has-text-white" %></button>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+            <th><abbr title="Id">Id</abbr></th>
+            <th>Username</th>
+            <th><abbr title="Email">Email</abbr></th>
+            <th><abbr title="Admin">Admin</abbr></th>
+            <th>Toggle Admin</th>
+            <th>Destroy User</th>
+            </tr>
+        </thead>
+        <% @users.each do |user| %>
+            <tr>
+            <th><%= user.id %></th>
+            <th><%= user.username %></th>
+            <th><%= user.email %></th>
+            <th><%= user.admin %></th>
+            <th><%= button_to "Toggle", :method=> :post, params: {user_id: user.id}  %></th>
+            <th><%= button_to "Destroy", user, :method => :delete, params: {user_id: user.id} %></th>
+            </tr>
+        <% end %>
+        </table>
+    <%else%>
+        <button class="button is-large is-info mr-3"><%= link_to 'Projects', "/projects", class:"has-text-white" %></button>
+        <div class="title"> Nothing here for you to see </div>
+    <% end %>
+ </div>
+
+
+
+
+
+ 

@@ -11,6 +11,11 @@
       <p class="mr-5 has-text-weight-bold">
         Hello <%= @username%>
       </p>
+        <% if current_user.admin %>
+          <a class="mr-1">
+            <%= link_to "Admin", "/pages/admin", class: "button has-text-dark"%>
+          </a>
+        <%end%>
         <a class="mr-1">
           <%= link_to "Add Project", new_project_path, class: "button has-text-dark"%>
         </a>
@@ -19,26 +24,21 @@
     </div>
     <div class="columns mt-6 ml-2">
 
-      <div class="column is-one-third">
+      <div class="column">
         <strong class="is-size-4"> All Projects </strong>
               <% @projects.each do |project| %>
                 <%= render project %>
               <% end %>  
       </div>
 
-      <div class="column is-one-third">
+      <div class="column">
         <strong class="is-size-4">  My Projects </strong>
               <% @users_projects.each do |project| %>
                 <%= render project %>
               <% end %>  
       </div>
 
-      <div class="column is-one-third">
-        <strong class="is-size-4">Shared Projects </strong>
-              <% @projects.each do |project| %>
-                <%= render project %>
-              <% end %>  
-      </div>
+
 
       
 
