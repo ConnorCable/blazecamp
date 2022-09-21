@@ -3,7 +3,8 @@
 
 
 <div class="fullscreen background">
-    <%if current_user.admin%>
+    <%if current_user.admin %>
+    
         <div class="columns">
             <div class="title has-text-white mr-4">Admin Page </div>
             <button class="button is-large is-info mr-3"><%= link_to 'Back to Projects', "/projects", class:"has-text-white" %></button>
