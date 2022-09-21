@@ -6,26 +6,25 @@
 #
 default: &default
   adapter: postgresql
-  template: template0
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
-  adapter: postgresql
-  database: development
-  template: template0
-  pool: 5
-  timeout: 5000
+  <<: *default
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: app_development
+
 test:
-  adapter: postgresql
-  database: my_database_test
-  pool: 5
-  timeout: 5000
+  <<: *default
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: app_test
+
 production:
-  adapter: postgresql
-  database: d2vunvm3dracr1
-  username: bjiksjruqymcyu
-  password: 5b794bd981dfba1f972eb9a8c0bee43570ab6b7acb1f01e1e51d295b90ff21de
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: app_production
+  username: app
+  password: <%= ENV["APP_DATABASE_PASSWORD"] %>
