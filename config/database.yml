@@ -5,21 +5,27 @@
 #   gem "sqlite3"
 #
 default: &default
-
   adapter: postgresql
-  pool: 5
-  timeout: 5000
-  username:
-  password:
+  template: template0
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 development:
-  <<: *default
-  database: db_name
-
+  adapter: postgresql
+  database: development
+  template: template0
+  pool: 5
+  timeout: 5000
 test:
-  <<: *default
-  database: db_name
-
+  adapter: postgresql
+  database: my_database_test
+  pool: 5
+  timeout: 5000
 production:
-  <<: *default
-  database: db_name
+  adapter: postgresql
+  database: d2vunvm3dracr1
+  username: bjiksjruqymcyu
+  password: 5b794bd981dfba1f972eb9a8c0bee43570ab6b7acb1f01e1e51d295b90ff21de
+  pool: 5
+  timeout: 5000
